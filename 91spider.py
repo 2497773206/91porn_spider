@@ -90,16 +90,13 @@ def download_m3u8():
         title,urls = ''.join(url).split('<>',1)
         os.system(os.getcwd() + '/Settings/./ffmpeg -y -i ' + urls + ' -vcodec copy -acodec copy -absf aac_adtstoasc ' + os.getcwd() +'/Videos/' + title + '.mp4')
     os.system('rm -rf url.txt')#每次下载完以后删除url.txt
-    os.system(os.getcwd() + 'bash upload.sh')#运行自动上传脚本
 
 def enter(category):
     end = int(input("请输入想爬的页数:")) + 1
     for page in range(1, end):
         url = URL + '/v.php?category=' + category + '&viewtype=basic&page=' + str(page)
-        print('正在爬取>>>>>>>>>>' + url + '<<<<<<<<<<正在爬取')
         time.sleep(random.randint(1, 3))
         parseList(url)
-        print('爬取完毕>>>>>>>>>>' + url + '<<<<<<<<<<爬取完毕')
         
 
 if __name__ == '__main__':
@@ -146,22 +143,3 @@ if __name__ == '__main__':
         category = zone_8
         enter(category)
         download_m3u8()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
